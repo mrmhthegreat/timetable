@@ -1,0 +1,279 @@
+{% extends  'base.html' %}
+
+    {%block content%}
+<div class='col-lg-4  col-sm-12 col-12 col-md-8 m-auto mt-5 mb-5 p-3 bg-gray'id='bg'>
+    <div class=' bg-success  p-5 mb-5 center text-white'>
+        <h3>Student Course Allocation Form</h3>
+    </div>
+    <div class="form-group  mb-3">
+        <label class="form-check-label mb-3 " for="usr"> Roll Number <span class='text-danger'> * </span></label>
+        <input type="text" name='roll' class="form-control" id="roll">
+      </div>
+    <div id='rerror' class='alert alert-warning d-none'>Enter Roll Number</div>
+
+      <div class="form-group  mb-3">
+        <label class="form-check-label mb-3 " for="usr">Full Name<span class='text-danger'> * </span></label>
+        <input type="text" class="form-control" name="name" id="name">
+      </div>
+    <div id='nerror' class='alert alert-warning d-none'>Enter Full Name</div>
+
+      <div class="form-group  mb-3">
+        <label class="form-check-label mb-3 " for="usr">Email<span class='text-danger'> * </span></label>
+        <input type="text" class="form-control" name="email" id="email">
+      </div>
+    <div id='eerror' class='alert alert-warning d-none'>Enter Email</div>
+
+    <label class="form-check-label mb-3 " for="flexCheckChecked">
+        Department <span class='text-danger'> * </span>
+    </label>
+    <select class='form-select mb-4 '   name='department' hx-get='{% url "program" %}' hx-trigger='change' hx-target='#program' id="department">
+        <option selected  value='Select'> Select department</option>
+        {%for depart in department %}
+        <option value='{{depart.short_name}}' > {{depart.department_name}}</option>
+
+        {%endfor%}
+    </select>
+    <div id='Error' class='alert alert-warning d-none'>Select Department</div>
+        <div id="program" >
+
+            {% include 'program.html' %}
+        </div>
+       
+
+            
+    <button class='btn btn-success  btn-lg col-12 ' onclick="fill();">Submit</button>
+
+    </div>
+    
+    {% comment %} <h1 class='col-4 m-auto'>Allocation Form</h1>
+    
+    <form  class='col-4 m-auto' method="post">
+{% csrf_token %}
+        <div class='row'>
+            <div class='col-6'>
+
+            {{form.roll_number|as_crispy_field}}
+
+            </div>
+            <div class='col-6'>
+
+                {{form.email|as_crispy_field}}
+    
+                </div>
+        </div>
+       
+    
+    <div class="mb-3"></div>
+     <div class='row'>
+            <div class='col-6'>
+
+            {{form.full_name|as_crispy_field}}
+
+            </div>
+          
+            <div class='col-6'>
+
+                {{form.gender|as_crispy_field}}
+    
+                </div>
+        </div>
+   
+    </div>
+    <div class="mb-3"></div>
+
+ 
+        <div class='row'>
+
+            {{form.samester_id|as_crispy_field}}
+
+          
+
+        </div>
+    <div class="mb-3"></div>
+
+        <div class='row'>
+
+            {{form.section|as_crispy_field}}
+
+          
+
+        </div>
+    <div class="mb-3"></div>
+
+        <div class='row'>
+
+            {{form.courses_ids|as_crispy_field}}
+            <div class="mb-3">
+
+            </div>
+{{form.program_id|as_crispy_field}}
+
+    
+        </div>
+        <div class="mb-3">
+
+        </div>
+
+            {{form.samester_id|as_crispy_field}}
+
+            <div class="mb-3">
+
+            </div>
+            <div class='col-6'>
+
+                {{form.is_available|as_crispy_field}}
+    
+                </div>
+        </div>
+        <button class='btn bt-lg col-12 btn-success mt-5' type='Submit'>Submit</button>
+    </form> {% endcomment %}
+   {%endblock content%}
+   {%block js%}
+function fill(){
+    var x = document.getElementById("roll");
+    if(x.value.length==0){
+        var ree = document.getElementById("rerror");
+
+    ree.classList.remove("d-none");
+    return;
+   }else{
+    var ree = document.getElementById("rerror");
+
+    ree.classList.add("d-none");
+   
+    }
+    var x2 = document.getElementById("name");
+    if(x2.value.length==0){
+        var ree2 = document.getElementById("nerror");
+
+    ree2.classList.remove("d-none");
+    return;
+
+   }else{
+    var ree2 = document.getElementById("nerror");
+
+    ree2.classList.add("d-none");
+   
+    }
+    var x3 = document.getElementById("email");
+    if(x3.value.length==0){
+        var ree3= document.getElementById("eerror");
+
+    ree3.classList.remove("d-none");
+    return;
+
+   }else{
+    var ree3 = document.getElementById("eerror");
+
+    ree3.classList.add("d-none");
+   
+    }
+   var e = document.getElementById("department");
+   var value = e.value;
+   var text = e.options[e.selectedIndex].value;
+   if(text=="Select"){
+   var er = document.getElementById("Error");
+
+    er.classList.remove("d-none");
+    return;
+
+   }else{
+    var er = document.getElementById("Error");
+
+    er.classList.add("d-none");
+   }
+   var e1 = document.getElementById("programdata");
+   var value1 = e1.value;
+   var text1 = e1.options[e1.selectedIndex].value;
+   if(text1=="Select"){
+   var er1 = document.getElementById("Error1");
+
+    er1.classList.remove("d-none");
+    return;
+
+   }else{
+    var er1 = document.getElementById("Error1");
+
+    er1.classList.add("d-none");
+   } 
+   
+   var e2 = document.getElementById("samesterdata");
+   var value2 = e2.value;
+   var text2 = e2.options[e2.selectedIndex].value;
+   if(text2=="Select"){
+   var er2 = document.getElementById("Error2");
+
+    er2.classList.remove("d-none");
+    return;
+
+   }else{
+    var er2 = document.getElementById("Error2");
+
+    er2.classList.add("d-none");
+   }
+
+
+   var e3 = document.getElementById("sectiondata");
+   var value3 = e3.value;
+   var text3 = e3.options[e3.selectedIndex].value;
+   if(text3=="Select"){
+   var er3 = document.getElementById("Error3");
+
+    er3.classList.remove("d-none");
+    return;
+
+   }else{
+    var er3 = document.getElementById("Error3");
+
+    er3.classList.add("d-none");
+   }
+   let cookie = document.cookie
+   let csrfToken = cookie.substring(cookie.indexOf('=') + 1)
+   var data;
+   $.ajax({
+    data:{"section":value3},
+    url: "{% url 'cj' %}",
+
+    success: function (response) {
+        data=response;
+  console.log(response);
+     },
+   });
+   console.log(data);
+   for (var key in data.data) {
+    var obj = key;
+    console.log(obj);
+  }
+   {%for programs in courser%}
+   
+   var yes = document.getElementById("course{{programs.short_name}}");  
+   console.log("course{{programs.short_name}}")
+   if (yes.checked == true ){  
+
+    data['course{{programs.short_name}}']={{programs.short_name}};
+   }  
+   {%endfor%}
+console.log(data);
+   function ajaxCall() {
+   $.ajax({
+    type: "POST",
+    data: {'roll':x.value,'name':x2.value,'email':x3.value,'department':value,'program':value1,'samester':value2,'section':value3}, // get the form data
+    url: "{% url 'fill' %}",
+    headers: {
+        'X-CSRFToken': csrfToken
+        },
+    // on success
+    success: function (response) {
+       console.log(response);
+
+    },
+    // on error
+    error: function (response) {
+        // alert the error if any error occured
+        console.log(response.responseJSON.errors)
+    }
+});
+}
+{% comment %} ajaxCall(); {% endcomment %}
+}
+   {%endblock js%}

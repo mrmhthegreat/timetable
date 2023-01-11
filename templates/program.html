@@ -1,0 +1,16 @@
+<label class="form-check-label mb-3 " for="flexCheckChecked">
+   Program <span class='text-danger'> * </span>
+</label>
+    <select class='form-select mb-4' name='program'  id="programdata" hx-get='{% url "samester" %}' hx-trigger='change' hx-target='#samester'>
+        <option selected  value='Select'> Select Program</option>
+        {%for programs in program%}
+        <option value='{{programs.short_name}}' > {{programs.program_name}}</option>
+
+        {%endfor%}
+    </select>
+    <div id='Error1' class='alert alert-warning d-none'>Select Program</div>
+
+    <div id="samester" >
+
+        {% include 'samester.html' %}
+    </div>

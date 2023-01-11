@@ -1,0 +1,34 @@
+<label class="form-check-label mb-3 " for="flexCheckChecked">
+   Samester <span class='text-danger'> * </span>
+</label>
+<select class='form-select mb-4' name='samesterdata' id="samesterdata"  >
+<option selected value='Select'> Select samester</option>
+{%for samesters in samester%}
+        
+        <option value='{{samesters.short_name}}' > {{samesters.short_name}}</option>
+        {%endfor%}
+
+    </select>
+    <div id='Error2' class='alert alert-warning d-none'>Select Samester</div>
+
+    <label class="form-check-label " for="flexCheckChecked">
+        Section <span class='text-danger'> * </span>
+    </label>
+    <select class='form-select mb-4' id="sectiondata" name='section' hx-get='{% url "course" %}' hx-trigger='change' hx-target='#course' >
+        <option selected value='Select'> Select Section</option>
+        {%for samesters in samester%}
+       
+        <option value='{{samesters.sections_id.short_name}}' > {{samesters.sections_id.short_name}}</option>
+        {%endfor%}
+
+    </select>
+    <div id='Error3' class='alert alert-warning d-none'>Select Section</div>
+    
+    <div id="course" >
+
+        {% include 'courser.html' %}
+    </div>
+    {% comment %} <div id="course" >
+
+        {% include 'course.html' %}
+    </div> {% endcomment %}

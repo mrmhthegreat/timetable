@@ -1,0 +1,18 @@
+
+
+<label class="form-check-label mb-3 text-white" for="flexCheckChecked">
+    Select Course Which You Can Study <span class='text-danger'> * </span>
+</label>
+<div class="form-check">
+    {%for programs in courser%}
+    <input class="form-check-input"  type="checkbox" value="{{programs.short_name}}" name="course{{programs.short_name}}" >
+    <label class="form-check-label" for="flexCheckChecked"id='course{{programs.short_name}}'>
+        {{programs.course_id.course_name}}
+    </label>
+    <div class="alert alert-primary mt-1" role="alert">
+      Pre Request  {{programs.course_id.prerequest_id.course_name}}
+
+      </div>
+    {%endfor%}
+  </div>
+   
