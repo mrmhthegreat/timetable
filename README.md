@@ -10,6 +10,7 @@
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Video Demonstration](#video-demonstration)
 - [Directory Structure](#directory-structure)
 - [Areas for Improvement](#areas-for-improvement)
 - [Contributing](#contributing)
@@ -84,6 +85,18 @@ To set up the project locally, follow these steps:
 
 3. **Review Output**:
    Open the generated Excel file to view the timetable, organized by grade, day, and time slot.
+
+## Video Demonstration
+
+Watch the following video demonstrations to see the Timetable Generator in action:
+
+- [Watch Admin Side Demonstration](https://youtu.be/-7-pXE0VMjY): Shows the administrative interface for configuring inputs and generating schedules.
+- [Watch Additional Demonstration](https://youtu.be/0gAs3cTyWuI): Provides further insights into the application’s functionality.
+
+<!-- Optional: To use thumbnail images, upload thumbnails to the `media/` directory and uncomment the lines below:
+[![Admin Side Demonstration](media/admin_demo_thumbnail.jpg)](https://youtu.be/-7-pXE0VMjY)
+[![Additional Demonstration](media/additional_demo_thumbnail.jpg)](https://youtu.be/0gAs3cTyWuI)
+-->
 
 ## Directory Structure
 
